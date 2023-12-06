@@ -73,4 +73,111 @@ def apaga(s, n):
 def troca(s):
   return s if len(s) <= 1 else s[-1] + s[1:-1] + s[0]
 
+# Provided simple test() function used in main() to print
+# what each function returns vs. what it's supposed to return.
+def test(obtido, esperado):
+  if obtido == esperado:
+    prefixo = ' Parabéns!'
+  else:
+    prefixo = ' Ainda não'
+  print ('%s obtido: %s esperado: %s'
+         % (prefixo, repr(obtido), repr(esperado)))
 
+def main():
+  print ('Oba! Hoje vou ficar dormindo!')
+  test(dormir(False, False), True)
+  test(dormir(True, False), False)
+  test(dormir(False, True), True)
+  test(dormir(True, True), True)
+
+  print ()
+  print ('Alunos problema')
+  test(alunos_problema(True, True), True)
+  test(alunos_problema(False, False), True)
+  test(alunos_problema(True, False), False)
+  test(alunos_problema(False, True), False)
+
+  print ()
+  print ('Soma dobro')
+  test(soma_dobro(1, 2), 3)
+  test(soma_dobro(3, 2), 5)
+  test(soma_dobro(2, 2), 8)
+  test(soma_dobro(-1, 0), -1)
+  test(soma_dobro(0, 0), 0)
+  test(soma_dobro(0, 1), 1)
+
+  print ()
+  print ('Diff21')
+  test(diff21(19), 2)
+  test(diff21(10), 11)
+  test(diff21(21), 0)
+  test(diff21(22), 2)
+  test(diff21(25), 8)
+  test(diff21(30), 18)
+
+  print ()
+  print ('Papagaio')
+  test(papagaio(True, 6), True)
+  test(papagaio(True, 7), False)
+  test(papagaio(False, 6), False)
+  test(papagaio(True, 21), True)
+  test(papagaio(False, 21), False)
+  test(papagaio(True, 23), True)
+  test(papagaio(True, 20), False)
+
+  print ()
+  print ('Dez')
+  test(dez(9, 10), True)
+  test(dez(9, 9), False)
+  test(dez(1, 9), True)
+  test(dez(10, 1), True)
+  test(dez(10, 10), True)
+  test(dez(8, 2), True)
+  test(dez(8, 3), False)
+  test(dez(10, 42), True)
+  test(dez(12, -2), True)
+
+  print ()
+  print ('Dista 10')
+  test(dista10(93), True)
+  test(dista10(90), True)
+  test(dista10(89), False)
+  test(dista10(110), True)
+  test(dista10(111), False)
+  test(dista10(121), False)
+  test(dista10(0), False)
+  test(dista10(5), False)
+  test(dista10(191), True)
+  test(dista10(189), False)
+  test(dista10(190), True)
+  test(dista10(200), True)
+  test(dista10(210), True)
+  test(dista10(211), False)
+  test(dista10(290), False)
+
+  print ()
+  print ('Apaga')
+  test(apaga('kitten', 1), 'ktten')
+  test(apaga('kitten', 0), 'itten') 
+  test(apaga('kitten', 4), 'kittn')
+  test(apaga('Hi', 0), 'i')
+  test(apaga('Hi', 1), 'H')
+  test(apaga('code', 0), 'ode')
+  test(apaga('code', 1), 'cde')
+  test(apaga('code', 2), 'coe')
+  test(apaga('code', 3), 'cod')
+  test(apaga('chocolate', 8), 'chocolat')
+
+  print ()
+  print ('Troca letras')
+  test(troca('code'), 'eodc')	    
+  test(troca('a'), 'a')
+  test(troca('ab'), 'ba')
+  test(troca('abc'), 'cba')
+  test(troca(''), '')
+  test(troca('Chocolate'), 'ehocolatC')
+  test(troca('nythoP'), 'Python')
+  test(troca('hello'), 'oellh')
+  
+if __name__ == '__main__':
+  main()
